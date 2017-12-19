@@ -1,18 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreToDo.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreToDo.Controllers
 {
-    [Authorize("Adminstrator")]
+    [Authorize(Roles = "Administrator")]
     public class ManageUsersController : Controller
     {
-        public IActionResult Index()
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ManageUsersController(UserManager<ApplicationUser>  userManager)
         {
-            return View();
+            _userManager = userManager;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var admins = await _userManager
+                .GetUsersInRoleAsync("Administrator");
+
+            var everyOne = await _userManager.Users
+                .ToArrayAsync();
+
+            var model = new ManagerUsersViewModel
+            {
+                Administrators = admins,
+                Everyone = everyOne
+            };
+
+            return View(model);
         }
     }
+
+   
 }
+
+
+ 
