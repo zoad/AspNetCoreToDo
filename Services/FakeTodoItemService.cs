@@ -7,6 +7,11 @@ namespace AspNetCoreToDo.Services
 {
     public class FakeTodoItemService : ITodoItemService
     {
+        public Task<bool> AddItemAsync(NewTodoItem newItem)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IEnumerable<TodoItem>> GetIncompleteItemsAsync()
         {
             IEnumerable<TodoItem> items = new[]
@@ -25,6 +30,11 @@ namespace AspNetCoreToDo.Services
           };
 
             return Task.FromResult(items);
+        }
+
+        public Task<bool> MarkDoneAsync(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

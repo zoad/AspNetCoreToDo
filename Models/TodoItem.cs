@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AspNetCoreToDo.Models
 {
@@ -10,6 +8,8 @@ namespace AspNetCoreToDo.Models
         public bool IsDone { get; set; }
         public string Title { get; set; }
         public DateTimeOffset? DueAt { get; set; }
+
+        public string OwnerId { get; set; }
 
     }
 }

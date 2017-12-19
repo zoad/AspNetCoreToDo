@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AspNetCoreToDo.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using AspNetCoreToDo.Models;
 
 namespace AspNetCoreToDo.Data
 {
@@ -14,6 +10,8 @@ namespace AspNetCoreToDo.Data
             : base(options)
         {
         }
+
+        public DbSet<TodoItem> Items { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

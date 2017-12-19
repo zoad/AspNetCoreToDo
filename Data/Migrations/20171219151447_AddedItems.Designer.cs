@@ -11,9 +11,10 @@ using System;
 namespace AspNetCoreToDo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171219151447_AddedItems")]
+    partial class AddedItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,8 +78,6 @@ namespace AspNetCoreToDo.Data.Migrations
                     b.Property<DateTimeOffset?>("DueAt");
 
                     b.Property<bool>("IsDone");
-
-                    b.Property<string>("OwnerId");
 
                     b.Property<string>("Title");
 
